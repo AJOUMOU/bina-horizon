@@ -10,19 +10,32 @@ export function ProgramRail() {
   const pinRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [pinHeight, setPinHeight] = useState("auto");
 
+  const usePinScroll = isDesktop && !reduceMotion;
+
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduceMotion(media.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const sync = () => {
+      setReduceMotion(motion.matches);
+      setIsDesktop(desktop.matches);
+    };
     sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
+    motion.addEventListener("change", sync);
+    desktop.addEventListener("change", sync);
+    return () => {
+      motion.removeEventListener("change", sync);
+      desktop.removeEventListener("change", sync);
+    };
   }, []);
 
   useEffect(() => {
-    if (reduceMotion) {
+    if (!usePinScroll) {
       setPinHeight("auto");
+      const track = trackRef.current;
+      if (track) track.style.transform = "";
       return;
     }
 
@@ -62,119 +75,137 @@ export function ProgramRail() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
     };
-  }, [reduceMotion]);
+  }, [usePinScroll]);
 
   return (
     <div
       ref={pinRef}
       className="relative"
-      style={reduceMotion ? undefined : { height: pinHeight }}
+      style={usePinScroll ? { height: pinHeight } : undefined}
     >
       <div
         className={cn(
           "flex flex-col bg-ivory",
-          reduceMotion ? "relative" : "sticky top-0 h-[100svh] overflow-hidden",
+          usePinScroll
+            ? "sticky top-0 h-[100svh] overflow-hidden"
+            : "relative py-10 md:py-14",
         )}
       >
-        <div className="flex shrink-0 items-end justify-between px-6 pb-5 pt-14 md:px-14 md:pb-6 md:pt-16">
-          <div>
+        <div
+          className={cn(
+            "flex shrink-0 items-end justify-between px-6 pb-5 md:px-14 md:pb-6",
+            usePinScroll ? "pt-24 md:pt-28" : "pt-2",
+          )}
+        >
+          <div className="min-w-0">
             <p className="chapter">The work</p>
-            <h2 className="mt-3 font-display text-4xl italic md:text-6xl">
+            <h2 className="mt-3 font-display text-[clamp(2rem,6vw,3.75rem)] italic leading-tight">
               Six rooms. One skyline.
             </h2>
           </div>
-          <p className="hidden max-w-[11rem] text-right text-sm text-copper md:block">
-            {reduceMotion
-              ? "Slide sideways. The work is not a tidy grid."
-              : "Keep scrolling. The rooms move with you."}
+          <p className="hidden max-w-[11rem] shrink-0 text-right text-sm text-copper md:block">
+            {usePinScroll
+              ? "Keep scrolling. The rooms move with you."
+              : "Swipe sideways. The work is not a tidy grid."}
           </p>
         </div>
 
         <div
           className={cn(
-            "min-h-0 flex-1",
-            reduceMotion ? "overflow-x-auto pb-8" : "overflow-hidden pb-6",
+            "min-h-0",
+            usePinScroll
+              ? "flex-1 overflow-hidden pb-6"
+              : "overflow-x-auto overscroll-x-contain pb-4 [-webkit-overflow-scrolling:touch]",
           )}
         >
           <div
             ref={trackRef}
             className={cn(
-              "flex items-end gap-5 px-6 md:gap-6 md:px-14",
-              reduceMotion && "h-auto",
+              "flex items-stretch gap-4 px-6 md:items-end md:gap-6 md:px-14",
+              !usePinScroll && "snap-x snap-mandatory",
             )}
             style={
-              reduceMotion
-                ? undefined
-                : {
+              usePinScroll
+                ? {
                     width: "max-content",
                     height: "100%",
                     willChange: "transform",
                   }
+                : { width: "max-content" }
             }
           >
             {programs.map((program, index) => (
               <article
                 key={program.n}
                 className={cn(
-                  "group relative flex shrink-0 flex-col overflow-hidden bg-brown-ink text-ivory",
-                  reduceMotion
-                    ? "h-[min(72vh,620px)] w-[min(85vw,380px)]"
-                    : "h-[min(64svh,600px)] w-[min(84vw,400px)] md:w-[min(36vw,420px)]",
-                  // Skyline stagger — rooms sit at different heights
-                  !reduceMotion && index % 3 === 1 && "md:mb-8",
-                  !reduceMotion && index % 3 === 2 && "md:mb-3",
+                  "group relative flex shrink-0 snap-start flex-col overflow-hidden bg-brown-ink text-ivory",
+                  usePinScroll
+                    ? "h-[min(58svh,560px)] w-[min(36vw,420px)]"
+                    : "h-[min(70vh,560px)] w-[min(82vw,360px)] sm:w-[min(70vw,380px)]",
+                  usePinScroll && index % 3 === 1 && "md:mb-8",
+                  usePinScroll && index % 3 === 2 && "md:mb-3",
                 )}
               >
-                {/* Image plane */}
-                <div className="relative min-h-0 flex-[1.15] overflow-hidden">
+                <div className="relative min-h-0 flex-[1.05] overflow-hidden bg-brown-ink">
                   <Photo
                     src={program.image}
                     alt=""
-                    className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                    sizes="(min-width: 768px) 36vw, 84vw"
+                    vivid
+                    fit={"showFull" in program && program.showFull ? "contain" : "cover"}
+                    className={cn(
+                      "absolute inset-0",
+                      "showFull" in program && program.showFull
+                        ? "brand-photo--integrate-ink"
+                        : "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]",
+                    )}
+                    sizes="(min-width: 768px) 36vw, 82vw"
                   />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown-ink via-transparent to-brown-ink/25"
+                    className={cn(
+                      "pointer-events-none absolute inset-0",
+                      "showFull" in program && program.showFull
+                        ? "bg-gradient-to-t from-brown-ink/80 via-transparent to-transparent"
+                        : "bg-gradient-to-t from-brown-ink via-transparent to-brown-ink/25",
+                    )}
                   />
-                  <div className="absolute left-5 top-5 flex items-center gap-3 md:left-6 md:top-6">
-                    <span className="grid size-11 place-items-center rounded-full border border-gold/70 bg-brown-ink/55 text-[0.62rem] uppercase tracking-[0.2em] text-gold backdrop-blur-[2px]">
+                  <div className="absolute left-4 top-4 flex items-center gap-2.5 md:left-6 md:top-6 md:gap-3">
+                    <span className="grid size-10 place-items-center rounded-full border border-gold/70 bg-brown-ink/55 text-[0.58rem] uppercase tracking-[0.2em] text-gold backdrop-blur-[2px] md:size-11 md:text-[0.62rem]">
                       {program.n}
                     </span>
-                    <span className="text-[0.62rem] uppercase tracking-[0.32em] text-ivory/80">
+                    <span className="text-[0.58rem] uppercase tracking-[0.28em] text-ivory/80 md:text-[0.62rem] md:tracking-[0.32em]">
                       Room
                     </span>
                   </div>
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-5 bottom-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent md:inset-x-6"
+                    className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent md:inset-x-6"
                   />
                 </div>
 
-                {/* Content plane */}
-                <div className="relative flex flex-[0.95] flex-col justify-between gap-5 px-5 py-6 md:px-6 md:py-7">
+                <div className="relative flex min-h-0 flex-1 flex-col justify-between gap-4 px-4 py-5 md:gap-5 md:px-6 md:py-7">
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute -right-2 top-2 font-display text-[5.5rem] leading-none text-white/[0.06] italic"
+                    className="pointer-events-none absolute -right-2 top-2 font-display text-[4.5rem] leading-none text-white/[0.06] italic md:text-[5.5rem]"
                   >
                     {program.n}
                   </div>
 
-                  <div className="relative">
-                    <p className="text-[0.62rem] uppercase tracking-[0.28em] text-gold">
+                  <div className="relative min-w-0">
+                    <p className="text-[0.58rem] uppercase tracking-[0.28em] text-gold md:text-[0.62rem]">
                       {program.n} / 06
                     </p>
-                    <h3 className="mt-3 max-w-[14ch] font-display text-[1.85rem] italic leading-[1.05] tracking-tight md:text-[2.15rem]">
+                    <h3 className="mt-2 max-w-[14ch] font-display text-[1.55rem] italic leading-[1.05] tracking-tight md:mt-3 md:text-[2.15rem]">
                       {program.title}
                     </h3>
-                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-ivory/80 md:text-[0.95rem]">
+                    <p className="mt-3 line-clamp-4 max-w-sm text-sm leading-relaxed text-ivory/80 md:mt-4 md:line-clamp-none md:text-[0.95rem]">
                       {program.copy}
                     </p>
                   </div>
 
                   <Link
                     href="/programs"
-                    className="relative inline-flex w-fit items-center gap-3 border border-gold/50 bg-gold/10 px-4 py-2.5 text-[0.64rem] uppercase tracking-[0.24em] text-gold transition-[background,border-color,color,transform] duration-500 hover:border-gold hover:bg-gold hover:text-brown-ink"
+                    className="relative inline-flex w-fit items-center gap-2 border border-gold/50 bg-gold/10 px-3.5 py-2 text-[0.6rem] uppercase tracking-[0.22em] text-gold transition-[background,border-color,color,transform] duration-500 hover:border-gold hover:bg-gold hover:text-brown-ink md:gap-3 md:px-4 md:py-2.5 md:text-[0.64rem] md:tracking-[0.24em]"
                   >
                     Enter the room
                     <svg

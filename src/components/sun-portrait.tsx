@@ -25,9 +25,9 @@ export function SunPortrait() {
         mx.set(0);
         my.set(0);
       }}
-      className="relative mx-auto size-[min(72vw,400px)]"
+      className="relative mx-auto size-[min(72vw,400px)] overflow-visible"
     >
-      <div className="pointer-events-none absolute inset-[-12%] animate-[spin_64s_linear_infinite] opacity-80">
+      <div className="pointer-events-none absolute inset-[-8%] animate-[spin_64s_linear_infinite] opacity-80 md:inset-[-12%]">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           {Array.from({ length: 24 }).map((_, i) => {
             const a = (i / 24) * Math.PI * 2;
@@ -54,12 +54,12 @@ export function SunPortrait() {
       </div>
       <div className="absolute inset-[9%] overflow-hidden rounded-full bg-brown-ink shadow-[0_0_0_3px_#D9A21B]">
         <Image
-          src="/images/gaze.jpg"
-          alt="A young woman looking toward the light"
+          src="/images/women-of-purpose.jpg"
+          alt="Bina Horizon women gathered at the Women of Purpose event"
           fill
           priority
           sizes="400px"
-          className="object-cover object-[center_18%] contrast-[1.05]"
+          className="object-cover object-[center_55%] contrast-[1.05]"
         />
       </div>
     </motion.div>

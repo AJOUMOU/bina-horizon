@@ -15,8 +15,24 @@ export const brand = {
     "To cultivate a global ecosystem of purpose-driven young women—equipping them with holistic education, transformative mentorship, and practical economic skills anchored in moral and spiritual excellence.",
 };
 
+export const founderVision = {
+  philosophy:
+    "Every woman carries potential, but potential must be developed before it can produce impact.",
+  talent:
+    "Talent becomes truly impactful when it is developed, disciplined and intentionally applied.",
+  vision:
+    "To become a woman of purpose, excellence, influence and lasting impact — fully committed to developing my God-given potential and using it to create meaningful opportunities for others.",
+  movement:
+    "A meaningful community and movement that equips women to rise beyond limitations and become women of competence, character, confidence and impact.",
+  journey:
+    "My journey is not simply about personal success. It is about becoming, building and empowering — developing what has been entrusted to me and using it to create a legacy that outlives me.",
+  commitment:
+    "Keep learning, keep growing, keep building and keep creating opportunities for others to rise.",
+  pillars: ["Purpose", "Excellence", "Growth", "Impact", "Legacy"],
+};
+
 export const nav = [
-  { href: "/", label: "Index", index: "00" },
+  { href: "/", label: "Home", index: "00" },
   { href: "/about", label: "The Name", index: "01" },
   { href: "/programs", label: "The Work", index: "02" },
   { href: "/values", label: "The Five R’s", index: "03" },
@@ -99,25 +115,25 @@ export const programs = [
   {
     n: "01",
     title: "Leadership & Mentorship",
-    image: "/images/mentor.jpg",
+    image: "/images/leadership-mentorship.jpg",
     copy: "Executive one-on-one coaching, peer leadership, purpose work, and career guidance. Mentorship here is not a panel and a handshake. It is a long conversation with someone who stays.",
   },
   {
     n: "02",
     title: "Digital Literacy & STEM",
-    image: "/images/study.jpg",
+    image: "/images/digital-stem.jpg",
     copy: "Microsoft Office, digital marketing, AI-tools awareness, and creative software. The future already assumes these skills. We refuse to let girls be late to a room they should own.",
   },
   {
     n: "03",
     title: "Creative Arts & Trade",
-    image: "/images/textile.jpg",
+    image: "/images/creative-arts.jpg",
     copy: "Hands-on workshops in makeup, Ankara design, beauty curation, beading, and event décor. Beauty as craft. Craft as income. Income as choice.",
   },
   {
     n: "04",
     title: "Financial Education & Enterprise",
-    image: "/images/craft.jpg",
+    image: "/images/financial-enterprise.jpg",
     copy: "Micro-business management, accounting basics, savings circles, and venture planning. Money is taught as a tool of dignity, not a mystery reserved for someone else.",
   },
   {
@@ -129,7 +145,8 @@ export const programs = [
   {
     n: "06",
     title: "Community & Cultural Exchange",
-    image: "/images/community.jpg",
+    image: "/images/community-exchange.jpg",
+    showFull: true,
     copy: "Social impact projects, cross-cultural exposure, and community service. The horizon is not a private view. It is a shared line.",
   },
 ];
@@ -145,7 +162,7 @@ export const governance = [
   {
     title: "Founder & Visionary Leader",
     person: "Wandia Remedy",
-    copy: "Strategic vision, brand alignment, and the directional spine of the movement.",
+    copy: "Strategic vision, brand alignment, and the directional spine of the movement — building organisations that create value, develop people and contribute positively to society.",
   },
   {
     title: "Executive Committee",

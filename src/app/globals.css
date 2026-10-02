@@ -36,7 +36,6 @@
 html {
   background: var(--ivory);
   color: var(--charcoal);
-  overflow-x: hidden;
 }
 
 body {
@@ -129,6 +128,165 @@ a {
 .brand-photo:hover img {
   transform: scale(1.1);
   filter: grayscale(0.1) contrast(1.12) saturate(0.95);
+}
+
+.brand-photo--contain img {
+  object-fit: contain !important;
+  object-position: center;
+  filter: none;
+  transform: none;
+}
+
+.brand-photo--contain::after {
+  display: none;
+}
+
+.brand-photo--contain:hover img {
+  transform: none;
+  filter: none;
+}
+
+/* Full portrait dissolves into the site paper */
+.brand-photo--integrate {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 55%),
+    var(--ivory);
+  overflow: hidden;
+}
+
+.brand-photo--integrate img {
+  object-fit: contain !important;
+  object-position: center bottom;
+  filter: saturate(0.92) contrast(1.02);
+  transform: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.brand-photo--integrate::after {
+  display: block;
+  background:
+    linear-gradient(
+      90deg,
+      var(--ivory) 0%,
+      transparent 14%,
+      transparent 86%,
+      var(--ivory) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--ivory) 0%,
+      transparent 12%,
+      transparent 78%,
+      color-mix(in srgb, var(--ivory) 88%, transparent) 100%
+    );
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+.brand-photo--integrate:hover img {
+  transform: none;
+  filter: saturate(0.96) contrast(1.03);
+}
+
+.brand-photo--integrate-to-brown::after {
+  background:
+    linear-gradient(
+      90deg,
+      var(--ivory) 0%,
+      transparent 12%,
+      transparent 72%,
+      color-mix(in srgb, var(--brown) 55%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--ivory) 0%,
+      transparent 10%,
+      transparent 82%,
+      var(--ivory) 100%
+    );
+}
+
+.brand-photo--integrate-portrait img {
+  object-position: center center;
+}
+
+.brand-photo--vivid img {
+  filter: contrast(1.04) saturate(1.05);
+  transform: scale(1.02);
+}
+
+.brand-photo--vivid::after {
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    color-mix(in srgb, var(--brown-ink) 45%, transparent)
+  );
+  mix-blend-mode: normal;
+}
+
+.brand-photo--vivid:hover img {
+  transform: scale(1.06);
+  filter: contrast(1.06) saturate(1.08);
+}
+
+.brand-photo--contain.brand-photo--vivid img,
+.brand-photo--contain.brand-photo--vivid:hover img {
+  transform: none;
+  object-fit: contain !important;
+}
+
+/* Full-frame photo dissolving into dark room cards */
+.brand-photo--integrate-ink {
+  background: var(--brown-ink);
+  overflow: hidden;
+}
+
+.brand-photo--integrate-ink img {
+  object-fit: contain !important;
+  object-position: center center;
+  filter: contrast(1.04) saturate(1.05);
+  transform: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 6%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 6%, #000 86%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.brand-photo--integrate-ink::after {
+  display: block;
+  background:
+    linear-gradient(
+      90deg,
+      var(--brown-ink) 0%,
+      transparent 12%,
+      transparent 88%,
+      var(--brown-ink) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--brown-ink) 0%,
+      transparent 10%,
+      transparent 70%,
+      var(--brown-ink) 100%
+    );
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+.brand-photo--integrate-ink:hover img {
+  transform: none;
+  filter: contrast(1.06) saturate(1.08);
 }
 
 .gold-underline {

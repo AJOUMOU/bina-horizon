@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
-import { brand, governance, nameMeaning } from "@/lib/content";
+import { brand, founderVision, governance, nameMeaning } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "The Name",
@@ -85,13 +85,14 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <section className="grid lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="grid bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
         <Photo
-          src="/images/presence.jpg"
-          alt="Portrait study in warm light"
-          className="min-h-[560px]"
+          src="/images/wandia-full.jpg"
+          alt="Wandia Remedy — Founder & Visionary Leader"
+          fit="contain"
+          className="brand-photo--integrate min-h-[640px] lg:min-h-[820px]"
         />
-        <div className="flex flex-col justify-center px-6 py-16 md:px-14">
+        <div className="flex flex-col justify-center bg-ivory px-6 py-16 md:px-14">
           <p className="chapter">Founder</p>
           <h2 className="mt-4 font-display text-6xl italic text-brown md:text-7xl">
             {brand.founder}
@@ -99,10 +100,17 @@ export default function AboutPage() {
           <p className="mt-3 text-[0.72rem] uppercase tracking-[0.3em] text-copper">
             {brand.founderRole}
           </p>
+          <blockquote className="mt-8 max-w-xl border-l-2 border-gold pl-6 font-display text-2xl leading-snug italic text-brown md:text-3xl">
+            “{founderVision.vision}”
+          </blockquote>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-charcoal/80">
-            She holds the vision and the directional spine. The work is
-            stewardship: every workshop, every mentor, every savings circle
-            still smelling like the original promise.
+            At the heart of that vision is Bina Horizon: {founderVision.movement}
+          </p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal/80">
+            {founderVision.journey}
+          </p>
+          <p className="mt-8 text-[0.62rem] uppercase tracking-[0.32em] text-copper">
+            {founderVision.pillars.join(" · ")}
           </p>
         </div>
       </section>

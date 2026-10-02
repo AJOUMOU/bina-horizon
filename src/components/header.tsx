@@ -45,21 +45,21 @@ export function Header() {
       </nav>
 
       <div
-        className="relative z-[120] grid grid-cols-3 items-center bg-ivory px-4 py-2 peer-checked:bg-transparent peer-checked:[&_.logo-on-light]:invisible peer-checked:[&_.logo-on-dark]:visible peer-checked:[&_.join-cta]:border-ivory/40 peer-checked:[&_.join-cta]:bg-transparent peer-checked:[&_.join-cta]:text-ivory peer-checked:[&_.join-cta:hover]:border-gold peer-checked:[&_.join-cta:hover]:bg-gold peer-checked:[&_.join-cta:hover]:text-brown-ink peer-checked:[&_.line-a]:translate-y-[5.5px] peer-checked:[&_.line-a]:rotate-45 peer-checked:[&_.line-b]:-translate-y-[5.5px] peer-checked:[&_.line-b]:-rotate-45 md:px-10"
+        className="relative z-[120] grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 bg-ivory px-3 py-2 peer-checked:bg-transparent peer-checked:[&_.logo-on-light]:invisible peer-checked:[&_.logo-on-dark]:visible peer-checked:[&_.join-cta]:border-ivory/40 peer-checked:[&_.join-cta]:bg-transparent peer-checked:[&_.join-cta]:text-ivory peer-checked:[&_.join-cta:hover]:border-gold peer-checked:[&_.join-cta:hover]:bg-gold peer-checked:[&_.join-cta:hover]:text-brown-ink peer-checked:[&_.line-a]:translate-y-[5.5px] peer-checked:[&_.line-a]:rotate-45 peer-checked:[&_.line-b]:-translate-y-[5.5px] peer-checked:[&_.line-b]:-rotate-45 md:gap-4 md:px-10"
       >
-        <Link href="/" className="relative justify-self-start">
-          <span className="logo-on-light block h-11 md:h-14">
+        <Link href="/" className="relative min-w-0 justify-self-start">
+          <span className="logo-on-light block h-9 max-w-[7.5rem] md:h-14 md:max-w-none">
             <Logo
               size="sm"
               priority
-              className="h-full [&_img]:h-full [&_img]:w-auto"
+              className="h-full max-w-full [&_img]:h-full [&_img]:w-auto [&_img]:max-w-full"
             />
           </span>
-          <span className="logo-on-dark invisible absolute inset-0 block h-11 md:h-14">
+          <span className="logo-on-dark invisible absolute inset-0 block h-9 max-w-[7.5rem] md:h-14 md:max-w-none">
             <Logo
               inverted
               size="sm"
-              className="h-full [&_img]:h-full [&_img]:w-auto"
+              className="h-full max-w-full [&_img]:h-full [&_img]:w-auto [&_img]:max-w-full"
             />
           </span>
         </Link>
@@ -67,7 +67,7 @@ export function Header() {
         <label
           htmlFor="bh-menu"
           data-cursor="gold"
-          className="sun-menu relative z-[121] mx-auto grid size-14 cursor-pointer place-items-center rounded-full bg-gold text-brown-ink shadow-[0_0_0_8px_rgba(217,162,27,0.18)]"
+          className="sun-menu relative z-[121] mx-auto grid size-12 shrink-0 cursor-pointer place-items-center rounded-full bg-gold text-brown-ink shadow-[0_0_0_8px_rgba(217,162,27,0.18)] md:size-14"
         >
           <span className="sr-only">Menu</span>
           <span className="relative flex h-3 w-5 flex-col items-center justify-between">
@@ -78,14 +78,14 @@ export function Header() {
 
         <Link
           href="/join"
-          className="join-cta group justify-self-end inline-flex items-center gap-2 border border-gold bg-gold px-3.5 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-brown-ink transition-[background,border-color,color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-gold-soft hover:shadow-[0_12px_28px_-16px_rgba(90,50,24,0.7)] md:gap-2.5 md:px-5 md:py-2.5 md:text-[0.68rem]"
+          className="join-cta group inline-flex min-w-0 max-w-full justify-self-end items-center gap-1.5 border border-gold bg-gold px-2.5 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] text-brown-ink transition-[background,border-color,color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-gold-soft hover:shadow-[0_12px_28px_-16px_rgba(90,50,24,0.7)] sm:gap-2 sm:px-3.5 sm:py-2 sm:text-[0.62rem] md:gap-2.5 md:px-5 md:py-2.5 md:text-[0.68rem] md:tracking-[0.22em]"
         >
-          <span className="hidden sm:inline">Join the horizon</span>
+          <span className="hidden truncate sm:inline">Join the horizon</span>
           <span className="sm:hidden">Join</span>
           <svg
             aria-hidden
             viewBox="0 0 24 12"
-            className="h-2.5 w-5 transition-transform duration-500 group-hover:translate-x-0.5"
+            className="hidden h-2.5 w-5 shrink-0 transition-transform duration-500 group-hover:translate-x-0.5 sm:block"
             fill="none"
           >
             <path

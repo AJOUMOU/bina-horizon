@@ -33,7 +33,7 @@ export function MillionMark() {
   return (
     <p
       ref={ref}
-      className="display-huge text-[18vw] text-brown md:text-[11rem]"
+      className="display-huge max-w-full text-[clamp(2.75rem,12vw,7.5rem)] leading-[0.85] tracking-[-0.04em] text-brown"
     >
       {value.toLocaleString("en-US")}
     </p>

@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 
 /** Flatter arc — kept short so the graphic doesn’t dominate the section */
 const positions = [
-  { x: 6, y: 38 },
-  { x: 28, y: 16 },
+  { x: 12, y: 38 },
+  { x: 30, y: 16 },
   { x: 50, y: 8 },
-  { x: 72, y: 16 },
-  { x: 94, y: 38 },
+  { x: 70, y: 16 },
+  { x: 88, y: 38 },
 ];
 
 export function FiveRs({ compact = false }: { compact?: boolean }) {
@@ -34,7 +34,7 @@ export function FiveRs({ compact = false }: { compact?: boolean }) {
           aria-label="The Five R’s"
         >
           <path
-            d="M4 40 Q50 2 96 40"
+            d="M10 40 Q50 2 90 40"
             fill="none"
             stroke="#D9A21B"
             strokeWidth="0.55"
@@ -94,7 +94,7 @@ export function FiveRs({ compact = false }: { compact?: boolean }) {
         </svg>
       </div>
 
-      <div className="mt-3 w-full min-h-[5.5rem] text-center md:min-h-[6.5rem]">
+      <div className="mt-3 w-full min-h-[7rem] px-2 text-center md:min-h-[7.5rem]">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={current.key}
@@ -106,7 +106,7 @@ export function FiveRs({ compact = false }: { compact?: boolean }) {
             <p className="text-[0.68rem] uppercase tracking-[0.34em] text-copper md:text-[0.72rem]">
               0{active + 1} — {current.subtitle}
             </p>
-            <h3 className="mt-2 font-display text-5xl italic leading-[1.05] tracking-tight text-brown md:text-6xl lg:text-7xl">
+            <h3 className="mt-2 font-display text-[clamp(2.25rem,8vw,4.5rem)] italic leading-[1.05] tracking-tight text-brown">
               {current.title}
             </h3>
           </motion.div>

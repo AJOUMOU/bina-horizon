@@ -8,7 +8,7 @@ import { ProgramRail } from "@/components/program-rail";
 import { Reveal } from "@/components/reveal";
 import { SunPortrait } from "@/components/sun-portrait";
 import { Button } from "@/components/ui/button";
-import { brand, nameMeaning } from "@/lib/content";
+import { brand, founderVision, nameMeaning } from "@/lib/content";
 
 export default function HomePage() {
   return (
@@ -21,11 +21,11 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-[1400px] pt-4 text-center">
           <p className="chapter hero-line">Faith-inspired · African · Association</p>
           <h1 className="mt-4">
-            <span className="hero-line display-huge block text-[28vw] text-brown md:text-[13rem]">
+            <span className="hero-line display-huge block text-[clamp(4.5rem,22vw,13rem)] text-brown">
               Rise
             </span>
             <span
-              className="hero-line -mt-2 block font-display text-[7.5vw] italic text-copper md:-mt-6 md:text-6xl"
+              className="hero-line -mt-2 block font-display text-[clamp(1.25rem,6.5vw,3.75rem)] italic text-copper md:-mt-6"
               style={{ animationDelay: "0.14s" }}
             >
               beyond the given map
@@ -44,8 +44,8 @@ export default function HomePage() {
           className="hero-line relative z-10 mx-auto mt-6 max-w-lg text-center text-lg leading-relaxed text-charcoal/80"
           style={{ animationDelay: "0.4s" }}
         >
-          {brand.line}. Bina Horizon raises girls who can discern, earn, pray,
-          and lead — then hands the light to the next one.
+          {brand.line}. Bina Horizon equips women to rise beyond limitations
+          and become women of competence, character, confidence and impact.
         </p>
 
         <div
@@ -74,7 +74,7 @@ export default function HomePage() {
       <section className="relative grid min-h-[80vh] md:grid-cols-2">
         <Reveal className="flex flex-col justify-end border-b border-copper/30 px-6 py-20 md:border-r md:px-14 md:py-28">
           <p className="chapter">01 — Hebrew &amp; Sanskrit</p>
-          <h2 className="mt-4 font-display text-[18vw] italic leading-[0.8] text-brown md:text-[7.5rem]">
+          <h2 className="mt-4 font-display text-[clamp(3.5rem,14vw,7.5rem)] italic leading-[0.8] text-brown">
             {nameMeaning.bina.word}
           </h2>
           <p className="mt-3 font-display text-2xl text-gold italic">
@@ -91,7 +91,7 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-x-0 top-[62%] h-px bg-gold" />
           <div className="sun-live pointer-events-none absolute left-[62%] top-[62%] size-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold" />
           <p className="chapter">02 — The line that keeps moving</p>
-          <h2 className="mt-4 font-display text-[14vw] italic leading-[0.8] text-brown md:text-[6.2rem]">
+          <h2 className="mt-4 font-display text-[clamp(3rem,12vw,6.2rem)] italic leading-[0.8] text-brown">
             {nameMeaning.horizon.word}
           </h2>
           <p className="mt-3 font-display text-2xl text-copper italic">
@@ -117,7 +117,7 @@ export default function HomePage() {
         </p>
         <Reveal>
           <p className="chapter text-gold">The Horizon Declaration</p>
-          <blockquote className="mt-8 max-w-5xl font-display text-[9vw] leading-[1.05] italic tracking-tight text-ivory md:text-7xl">
+          <blockquote className="mt-8 max-w-5xl font-display text-[clamp(1.75rem,7vw,4.5rem)] leading-[1.05] italic tracking-tight text-ivory">
             “When a girl rises beyond her boundaries,
             <span className="text-gold"> an entire generation </span>
             rises with her.”
@@ -164,11 +164,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="grid bg-ivory lg:grid-cols-[1.05fr_0.95fr]">
         <Photo
-          src="/images/presence.jpg"
-          alt="A woman in warm light — the posture of visionary leadership"
-          className="min-h-[520px] lg:min-h-[720px]"
+          src="/images/wandia-portrait.jpg"
+          alt="Wandia Remedy — Founder & Visionary Leader of Bina Horizon"
+          fit="contain"
+          className="brand-photo--integrate brand-photo--integrate-to-brown brand-photo--integrate-portrait min-h-[560px] lg:min-h-[720px]"
         />
         <div className="relative flex flex-col justify-center overflow-hidden bg-brown px-6 py-16 text-ivory md:px-16">
           <p className="pointer-events-none absolute -right-4 bottom-0 font-display text-[40vw] leading-none text-white/[0.05] italic">
@@ -182,10 +183,16 @@ export default function HomePage() {
             <p className="mt-3 text-[0.72rem] uppercase tracking-[0.3em] text-gold">
               {brand.founderRole}
             </p>
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-ivory/95">
-              Talent without impact is a lamp under a bowl. She built a house
-              that puts that lamp in the street — and teaches a million hands
-              how to keep it lit.
+            <blockquote className="mt-8 max-w-md font-display text-2xl leading-snug italic text-ivory md:text-3xl">
+              “{founderVision.philosophy}”
+            </blockquote>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-ivory/90">
+              {founderVision.talent} She built a house where that work happens
+              together — so women keep learning, keep growing, and keep
+              creating opportunities for others to rise.
+            </p>
+            <p className="mt-8 text-[0.62rem] uppercase tracking-[0.32em] text-gold">
+              {founderVision.pillars.join(" · ")}
             </p>
             <Button asChild className="mt-10 w-fit" variant="gold">
               <Link href="/about">The name &amp; the house</Link>

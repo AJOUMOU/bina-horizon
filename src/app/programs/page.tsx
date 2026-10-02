@@ -55,10 +55,14 @@ export default function ProgramsPage() {
               <Photo
                 src={program.image}
                 alt=""
+                vivid
+                fit={"showFull" in program && program.showFull ? "contain" : "cover"}
                 className={
-                  round
-                    ? "mx-auto aspect-square w-full max-w-md rounded-full ring-2 ring-gold lg:order-2"
-                    : "min-h-[420px]"
+                  "showFull" in program && program.showFull
+                    ? "brand-photo--integrate min-h-[520px] lg:min-h-[640px]"
+                    : round
+                      ? "mx-auto aspect-square w-full max-w-md rounded-full ring-2 ring-gold lg:order-2"
+                      : "min-h-[420px]"
                 }
               />
               <div className={round ? "lg:order-1" : ""}>
