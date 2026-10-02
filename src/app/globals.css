@@ -99,8 +99,13 @@ a {
   border-color: color-mix(in srgb, var(--copper) 45%, transparent);
 }
 
+@layer components {
+  .brand-photo {
+    position: relative;
+  }
+}
+
 .brand-photo {
-  position: relative;
   overflow: hidden;
   background: var(--brown-ink);
 }

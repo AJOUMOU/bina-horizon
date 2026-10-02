@@ -78,7 +78,7 @@ export function Header() {
 
         <Link
           href="/join"
-          className="join-cta group inline-flex min-w-0 max-w-full justify-self-end items-center gap-1.5 border border-gold bg-gold px-2.5 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] text-brown-ink transition-[background,border-color,color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-gold-soft hover:shadow-[0_12px_28px_-16px_rgba(90,50,24,0.7)] sm:gap-2 sm:px-3.5 sm:py-2 sm:text-[0.62rem] md:gap-2.5 md:px-5 md:py-2.5 md:text-[0.68rem] md:tracking-[0.22em]"
+          className="join-cta group inline-flex min-h-10 min-w-0 max-w-full justify-self-end items-center gap-1.5 border border-gold bg-gold px-2.5 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] text-brown-ink transition-[background,border-color,color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-gold-soft hover:shadow-[0_12px_28px_-16px_rgba(90,50,24,0.7)] sm:gap-2 sm:px-3.5 sm:py-2 sm:text-[0.62rem] md:gap-2.5 md:px-5 md:py-2.5 md:text-[0.68rem] md:tracking-[0.22em]"
         >
           <span className="hidden truncate sm:inline">Join the horizon</span>
           <span className="sm:hidden">Join</span>

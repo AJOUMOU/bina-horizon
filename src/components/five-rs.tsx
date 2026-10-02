@@ -120,7 +120,7 @@ export function FiveRs({ compact = false }: { compact?: boolean }) {
               type="button"
               onClick={() => setActive(i)}
               className={cn(
-                "border px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.18em] transition-colors",
+                "min-h-10 border px-3 py-2 text-[0.62rem] uppercase tracking-[0.18em] transition-colors",
                 i === active
                   ? "border-gold bg-gold text-brown-ink"
                   : "border-copper/40 text-copper hover:border-gold hover:text-brown",

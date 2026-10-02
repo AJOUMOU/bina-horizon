@@ -88,8 +88,8 @@ export default function HomePage() {
           delay={0.08}
           className="relative flex flex-col justify-end overflow-hidden px-6 py-20 md:px-14 md:py-28"
         >
-          <div className="pointer-events-none absolute inset-x-0 top-[62%] h-px bg-gold" />
-          <div className="sun-live pointer-events-none absolute left-[62%] top-[62%] size-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold" />
+          <div className="pointer-events-none absolute inset-x-0 top-[62%] hidden h-px bg-gold md:block" />
+          <div className="sun-live pointer-events-none absolute left-[62%] top-[62%] hidden size-8 md:block -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold" />
           <p className="chapter">02 — The line that keeps moving</p>
           <h2 className="mt-4 font-display text-[clamp(3rem,12vw,6.2rem)] italic leading-[0.8] text-brown">
             {nameMeaning.horizon.word}
