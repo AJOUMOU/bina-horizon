@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FiveRs } from "@/components/five-rs";
 import { Hills } from "@/components/hills";
 import { Marquee } from "@/components/marquee";
 import { MillionMark } from "@/components/million-mark";
-import { Photo } from "@/components/photo";
 import { ProgramRail } from "@/components/program-rail";
 import { Reveal } from "@/components/reveal";
 import { SunPortrait } from "@/components/sun-portrait";
@@ -165,12 +165,33 @@ export default function HomePage() {
       </section>
 
       <section className="grid bg-ivory lg:grid-cols-[1.05fr_0.95fr]">
-        <Photo
-          src="/images/wandia-portrait.jpg"
-          alt="Wandia Remedy — Founder & Visionary Leader of Bina Horizon"
-          fit="contain"
-          className="brand-photo--integrate brand-photo--integrate-to-brown brand-photo--integrate-portrait min-h-[560px] lg:min-h-[720px]"
-        />
+        <div className="flex items-center justify-center px-8 pb-16 pt-20 md:px-14 lg:py-24">
+          <figure className="w-full max-w-[440px]">
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full border border-gold/80 md:translate-x-5 md:translate-y-5"
+              />
+              <div className="relative aspect-[3/4] overflow-hidden rounded-t-full bg-brown-ink shadow-[0_40px_70px_-35px_rgba(58,30,14,0.6)]">
+                <Image
+                  src="/images/wandia-portrait.jpg"
+                  alt="Wandia Remedy — Founder & Visionary Leader of Bina Horizon"
+                  fill
+                  sizes="(min-width: 1024px) 440px, 90vw"
+                  className="object-cover object-[56%_30%]"
+                />
+              </div>
+              <span
+                aria-hidden
+                className="sun-live absolute -left-2 top-[16%] size-4 rounded-full bg-gold md:-left-3 md:size-5"
+              />
+            </div>
+            <figcaption className="mt-10 flex items-center gap-3 text-[0.62rem] uppercase tracking-[0.3em] text-copper">
+              <span aria-hidden className="h-px w-10 bg-gold" />
+              Wandia Remedy · Visionary
+            </figcaption>
+          </figure>
+        </div>
         <div className="relative flex flex-col justify-center overflow-hidden bg-brown px-6 py-16 text-ivory md:px-16">
           <p className="pointer-events-none absolute -right-4 bottom-0 font-display text-[40vw] leading-none text-white/[0.05] italic">
             WR

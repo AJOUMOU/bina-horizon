@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Photo } from "@/components/photo";
+import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { brand, founderVision, governance, nameMeaning } from "@/lib/content";
 
@@ -86,12 +86,33 @@ export default function AboutPage() {
       </section>
 
       <section className="grid bg-ivory lg:grid-cols-[0.9fr_1.1fr]">
-        <Photo
-          src="/images/wandia-full.jpg"
-          alt="Wandia Remedy — Founder & Visionary Leader"
-          fit="contain"
-          className="brand-photo--integrate min-h-[640px] lg:min-h-[820px]"
-        />
+        <div className="flex items-center justify-center px-8 pb-4 pt-20 md:px-14 lg:py-24">
+          <figure className="w-full max-w-[440px]">
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full border border-gold/80 md:translate-x-5 md:translate-y-5"
+              />
+              <div className="relative aspect-[3/4] overflow-hidden rounded-t-full bg-brown-ink shadow-[0_40px_70px_-35px_rgba(58,30,14,0.6)]">
+                <Image
+                  src="/images/wandia-founder.jpg"
+                  alt="Wandia Remedy — Founder & Visionary Leader"
+                  fill
+                  sizes="(min-width: 1024px) 440px, 90vw"
+                  className="object-cover object-[50%_25%]"
+                />
+              </div>
+              <span
+                aria-hidden
+                className="sun-live absolute -left-2 top-[16%] size-4 rounded-full bg-gold md:-left-3 md:size-5"
+              />
+            </div>
+            <figcaption className="mt-10 flex items-center gap-3 text-[0.62rem] uppercase tracking-[0.3em] text-copper">
+              <span aria-hidden className="h-px w-10 bg-gold" />
+              Wandia Remedy · Founder
+            </figcaption>
+          </figure>
+        </div>
         <div className="flex flex-col justify-center bg-ivory px-6 py-16 md:px-14">
           <p className="chapter">Founder</p>
           <h2 className="mt-4 font-display text-6xl italic text-brown md:text-7xl">

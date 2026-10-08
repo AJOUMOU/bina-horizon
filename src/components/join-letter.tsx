@@ -44,7 +44,7 @@ export function JoinLetter() {
           transition={{ type: "spring", stiffness: 200, damping: 14 }}
         >
           <Image
-            src="/brand/bina-horizon-mark.png"
+            src="/brand/bina-horizon-mark.svg"
             alt=""
             width={48}
             height={48}

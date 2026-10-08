@@ -10,8 +10,8 @@ type LogoProps = {
 };
 
 const sizes = {
-  sm: { width: 140, height: 88 },
-  md: { width: 180, height: 113 },
+  sm: { width: 140, height: 87 },
+  md: { width: 180, height: 112 },
   lg: { width: 240, height: 150 },
 } as const;
 
@@ -29,11 +29,7 @@ export function Logo({
   priority = false,
 }: LogoProps) {
   const dim = mark ? markSizes[size] : sizes[size];
-  const src = mark
-    ? "/brand/bina-horizon-mark.png"
-    : inverted
-      ? "/brand/bina-horizon-logo-light.png"
-      : "/brand/bina-horizon-logo.png";
+  const src = `/brand/bina-horizon-${mark ? "mark" : "logo"}${inverted ? "-light" : ""}.svg`;
 
   return (
     <span className={cn("inline-flex items-center", className)}>

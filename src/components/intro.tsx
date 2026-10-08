@@ -49,10 +49,10 @@ export function Intro() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
-                src="/brand/bina-horizon-logo-light.png"
+                src="/brand/bina-horizon-logo-light.svg"
                 alt="Bina Horizon — Talented for Impact"
                 width={280}
-                height={175}
+                height={174}
                 className="h-auto w-[min(72vw,280px)] object-contain"
                 priority
               />
