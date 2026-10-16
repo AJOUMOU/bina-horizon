@@ -174,11 +174,11 @@ export default function HomePage() {
               />
               <div className="relative aspect-[3/4] overflow-hidden rounded-t-full bg-brown-ink shadow-[0_40px_70px_-35px_rgba(58,30,14,0.6)]">
                 <Image
-                  src="/images/wandia-portrait.jpg"
+                  src="/images/wandia-portrait-studio.jpg"
                   alt="Wandia Remedy — Founder & Visionary Leader of Bina Horizon"
                   fill
                   sizes="(min-width: 1024px) 440px, 90vw"
-                  className="object-cover object-[56%_30%]"
+                  className="object-cover object-[50%_22%]"
                 />
               </div>
               <span
